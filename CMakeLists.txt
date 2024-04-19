@@ -24,6 +24,10 @@ target_link_libraries(MalfunctionRequest
     PRIVATE OpenSSL::SSL
 )
 
+if (WIN32)
+target_link_options(MalfunctionRequest PRIVATE -static-libgcc -static-libstdc++)
+endif()
+
 include(GNUInstallDirs)
 install(TARGETS MalfunctionRequest
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
